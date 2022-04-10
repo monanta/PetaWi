@@ -40,7 +40,7 @@
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="index.html">
+        <a href="/">
             <img alt="Logo" src="assets/media/logos/logo-light.png" />
         </a>
         <!--end::Logo-->
@@ -88,7 +88,7 @@
                 <!--begin::Brand-->
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
-                    <a href="index.html" class="brand-logo">
+                    <a href="/" class="brand-logo">
                         <img alt="Logo" src="assets/media/logos/logo-light.png" />
                     </a>
                     <!--end::Logo-->
@@ -125,7 +125,7 @@
                         <ul class="menu-nav">
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a target="_blank" href="http://petawi.test/"
+                                <a  href="http://petawi.test/"
                                     class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
@@ -150,7 +150,7 @@
 
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a target="_blank" href="http://petawi.test/"
+                                <a href="http://petawi.test/kegiatan"
                                     class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
@@ -169,7 +169,7 @@
                                         </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Builder</span>
+                                    <span class="menu-text">Kegiatan</span>
                                 </a>
                             </li>
 

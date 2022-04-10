@@ -20,7 +20,7 @@ class petawbController extends Controller
         return $data->toJSON();
     }
 
-    public function petawb()
+    public function tabel()
     {
         $data = PetaWB::get();
         return Datatables::of($data)->make(true);

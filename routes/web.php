@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\petawbController;
+use App\Http\Controllers\kegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,10 @@ Route::get('/a', function () {
 });
 
 Route::get('/', [petawbController::class,'index']);
-Route::get('/petawb', [petawbController::class,'petawb']);
+Route::get('/petawb-tabel', [petawbController::class,'tabel']);
+
+Route::get('/kegiatan', [kegiatanController::class,'index']);
+Route::get('/kegiatan-tabel', [kegiatanController::class,'tabel']);
+Route::post('/kegiatan/create', [kegiatanController::class,'create']);
+Route::get('/kegiatan/{idkeg}/delete', [kegiatanController::class,'delete']);
+Route::get('/getkegiatanbyid/{id}', [kegiatanController::class,'getkegiatanbyid']);
