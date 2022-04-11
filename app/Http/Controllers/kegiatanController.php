@@ -13,8 +13,6 @@ class kegiatanController extends Controller
     public function index()
     {
         return view('kegiatan');
-        $data = Kegiatan::all();
-        return $data->toArray();
     }
     public function tabel()
     {
@@ -25,16 +23,17 @@ class kegiatanController extends Controller
 
     public function create(Request $request)
     {
-        try {
+        $idkeg = $request->get('idkeg');
+        // return $idkeg;
+        if ($idkeg == 0) {
             Kegiatan::create($request->all());
             $idkeg = Kegiatan::select('idkeg')
                            ->where('nmkeg', '=', $request->get('nmkeg'))
                            ->value('idkeg');
-        } catch (\Throwable $th) {
-            $idkeg = Kegiatan::select('idkeg')
-                           ->where('nmkeg', '=', $request->get('nmkeg'))
-                           ->value('idkeg');
+        }else {
             Matrik::where('idkeg', '=', $idkeg)->delete();
+            Kegiatan::where('idkeg', $idkeg)
+            ->update(['nmkeg' => $request->get('nmkeg')]);
         }
 
         $listbs = preg_split('/\r\n|\r|\n/', $request->get('listbs'));
@@ -57,7 +56,7 @@ class kegiatanController extends Controller
 
     public function getkegiatanbyid($idkeg)
     {
-        return Kegiatan::where('idkeg', '=', $idkeg)->get();
+        return Kegiatanisibs::where('idkeg', '=', $idkeg)->get();
     }
 
 

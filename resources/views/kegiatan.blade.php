@@ -70,8 +70,8 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Nama Kegiatan</label>
-                            <input type="T_nmkeg" name="nmkeg" class="form-control" required>
+                            <label id="aaa">Nama Kegiatan</label>
+                            <input id="T_nmkeg" type="text" name="nmkeg" class="form-control" required>
                         </div>
                         <div class="form-group mb-1">
                             <label for="exampleTextarea">Daftar IDBS (pisahkan dengan enter)
@@ -103,32 +103,33 @@
 
 
         function modaledit(id) {
-            // var data = $.get("http://petawi.test/getkegiatanbyid/" + id, function() {
-
-            // })
 
             $.getJSON('http://petawi.test/getkegiatanbyid/' + id, function(data) {
-                // console.log(data);
-                obj = JSON.parse(data);
-                console.log(obj.nmkeg);
-                // var string1 = JSON.stringify(data);
-                // var obj = JSON.parse(string1);
 
-                // // Accessing individual value from JS object
-                // alert(obj.nmkeg); // Outputs: Peter
-                // alert(obj.age); // Outputs: 22
-                // alert(obj.country); // Outputs: United States
+                $('#T_nmkeg').val(data[0].nmkeg);
+                $('#T_list_bs').val(data[0].list_bs);
+
             });
-
-            // list_bs =
-            // $('#T_list_bs').text(data['list_bs']);
-            // $('#T_nmkeg').text(nmkeg);
+            $("#form").submit(function(eventObj) {
+                $("<input />").attr("type", "hidden")
+                    .attr("name", "idkeg")
+                    .attr("value", id)
+                    .appendTo("#form");
+                return true;
+            });
         }
 
         $('#tambahkegiatan').click(function() {
-            $('#T_list_bs').text("");
-            $('#T_nmkeg').text("");
+            $("<input />").attr("type", "hidden")
+                .attr("name", "idkeg")
+                .attr("value", 0)
+                .appendTo("#form");
+
+            $('#T_nmkeg').val('');
+            $('#T_list_bs').val('');
+            return true;
         });
+
 
 
         function getalldata() {
@@ -159,7 +160,7 @@
                         name: 'idkeg',
                         "orderable": false,
                         render: function(data, type, row) {
-                            return `<a href="/cetak/` + row.idkeg + `" class="btn btn-primary btn-sm" style="margin-right:7px;width:70px">Cetak</a>
+                            return `<a href="/cetakkegiatan/` + row.idkeg + `" class="btn btn-primary btn-sm" style="margin-right:7px;width:70px">Cetak</a>
                                     <a id="asasas" onclick="modaledit(` + row.idkeg + `)" data-toggle="modal" data-target="#modalSaya" class="btn btn-warning btn-sm" style="margin-right:7px;width:70px">Edit</a>
                                     <a href="/kegiatan/` + row.idkeg + `/delete" class="btn btn-danger btn-sm" style="margin-right:7px;width:70px">Hapus</a>
                                     `

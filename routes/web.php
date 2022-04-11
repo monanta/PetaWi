@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\petawbController;
 use App\Http\Controllers\kegiatanController;
+use App\Http\Controllers\cetakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::get('/kegiatan-tabel', [kegiatanController::class,'tabel']);
 Route::post('/kegiatan/create', [kegiatanController::class,'create']);
 Route::get('/kegiatan/{idkeg}/delete', [kegiatanController::class,'delete']);
 Route::get('/getkegiatanbyid/{id}', [kegiatanController::class,'getkegiatanbyid']);
+Route::get('/cetak/{idbs}', [cetakController::class,'index']);
+Route::get('/cetakkegiatan/{idkeg}', [cetakController::class,'cetakkegiatan']);
